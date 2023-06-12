@@ -10,6 +10,7 @@ from .serializers import UserSerializer
 
 from helpers import send_sms, random_password
 from helpers.random_password import generate_code_token
+from .serializers import LoginEndSerializer, LoginStartSerializer
 
 
 class RegisterApiView(APIView):
@@ -45,6 +46,7 @@ class RegisterApiView(APIView):
 
 class LoginStartView(APIView):
     permission_classes = (permissions.AllowAny,)
+    serializer_class = LoginStartSerializer
 
     def post(self, request):
         email = request.data.get('email')
@@ -70,6 +72,9 @@ class LoginStartView(APIView):
 
 
 class LoginEndView(APIView):
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = LoginEndSerializer
+
     def post(self, request):
         code = request.data.get('code')
         code_token = request.data.get('code_token')
@@ -86,4 +91,4 @@ class LoginEndView(APIView):
                 'access': str(refresh.access_token)
             })
         else:
-            return Response({'error':'code or code_token is wrong!'})
+            return Response({'error': 'code or code_token is wrong!'})

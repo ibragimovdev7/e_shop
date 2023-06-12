@@ -15,7 +15,15 @@ class LoginStartSerializer(serializers.ModelSerializer):
     email = serializers.CharField()
     password = serializers.CharField()
 
+    class Meta:
+        model = CustomUser
+        fields = ('email', 'password')
+
 
 class LoginEndSerializer(serializers.ModelSerializer):
     code = serializers.CharField()
     code_token = serializers.CharField()
+
+    class Meta:
+        model = CustomUser
+        fields = ('code', 'code_token')
