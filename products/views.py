@@ -1,14 +1,16 @@
 from .models import Category, Product
 from .serializers import CategorySerializer, ProductSerializer
-from rest_framework.viewsets import ModelViewSet, GenericViewSet
+from rest_framework.viewsets import  GenericViewSet
 from rest_framework import permissions, mixins, status
 from rest_framework.response import Response
+from helpers.pagination import CustomPagination
 
 
 class CategoryView(mixins.RetrieveModelMixin,
                    mixins.ListModelMixin,
                    GenericViewSet):
     serializer_class = CategorySerializer
+    pagination_class = CustomPagination
     permission_classes = (permissions.IsAuthenticated,)
     queryset = Category.objects.all()
 
@@ -27,6 +29,7 @@ class ProductView(mixins.RetrieveModelMixin,
                    GenericViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    pagination_class = CustomPagination
     permission_classes = (permissions.IsAuthenticated,)
 
     def list(self, request, *args, **kwargs):
