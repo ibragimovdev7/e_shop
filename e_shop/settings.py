@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'drf_yasg',
     # custom apps
     'account',
-    'products'
+    'products',
+    'orders'
 ]
 
 MIDDLEWARE = [
