@@ -1,15 +1,13 @@
-from rest_framework import mixins, status, permissions
+from rest_framework import mixins, status, permissions, generics
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
 
 from .models import File
-from .serializers import FileSerializer
+from .serializers import FileSerializer, FileDetailSerializer
 
 
-class FileView(
-        mixins.CreateModelMixin,
-        mixins.RetrieveModelMixin,
-        GenericViewSet):
+class FileView(mixins.CreateModelMixin, GenericViewSet):
     serializer_class = FileSerializer
     permission_classes = (permissions.AllowAny,)
 
@@ -18,16 +16,12 @@ class FileView(
         size = request.data.get('size')
         file = request.data.get('file')
         file_m = File.objects.create(
-            name = name,
-            size = size,
-            file = file
+            name=name,
+            size=size,
+            file=file
         )
         return Response({
-            'message' : 'File uploaded!',
-            'id' : file_m.id
-                         })
-
-    def retrieve(self, request, *args, **kwargs):
-        file = File.objects.get(request.data.get('id'))
-        serializer = FileSerializer(file, many=True)
-        return Response(serializer.data)
+            'message': 'File uploaded!',
+            'id': file_m.id,
+            'file_url' : file_m.file.url
+        })

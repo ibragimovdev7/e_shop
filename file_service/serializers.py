@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import File
 
+
 class FileSerializer(serializers.ModelSerializer):
     name = serializers.CharField()
     size = serializers.FloatField()
@@ -9,3 +10,9 @@ class FileSerializer(serializers.ModelSerializer):
     class Meta:
         model = File
         fields = ('name', 'size', 'file')
+
+
+class FileDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = File
+        fields = ['id', 'name', 'size', 'file']
