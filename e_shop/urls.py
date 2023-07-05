@@ -21,6 +21,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from products.routers import router as product_router
 from file_service.routers import router as file_router
+from orders.routers import router as order_router
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -30,7 +31,8 @@ urlpatterns = [
     path('auth/', include('account.urls')),
     path('products/', include(product_router.urls)),
     path('file/', include(file_router.urls)),
-    # path('file/', include('file_service.urls'))
+    path('order/', include(order_router.urls)),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL,

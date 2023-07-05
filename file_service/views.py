@@ -7,8 +7,9 @@ from .models import File
 from .serializers import FileSerializer, FileDetailSerializer
 
 
-class FileView(mixins.CreateModelMixin, GenericViewSet):
+class FileView(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.ListModelMixin, GenericViewSet):
     serializer_class = FileSerializer
+    queryset = File.objects.all()
     permission_classes = (permissions.AllowAny,)
 
     def create(self, request, *args, **kwargs):
@@ -23,5 +24,21 @@ class FileView(mixins.CreateModelMixin, GenericViewSet):
         return Response({
             'message': 'File uploaded!',
             'id': file_m.id,
-            'file_url' : file_m.file.url
+            'file_url': file_m.file.url
         })
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)

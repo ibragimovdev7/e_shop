@@ -1,0 +1,23 @@
+Qilingan ishlar: 
+
+1.  Sotuv -> Mijozlar -> mijozlar ma'lumotlarini o`zgartirish bo`limi ishlamagan, xozirda ishlayapti bug fixed
+2. Sotib olish -> Tovar va xizmatlar kirimi -> TXK(korparativ karta) = bu bo`limga o`zgartirish bo`limi qo`shildi va ishlamay turgan xatolar tuzatildi
+3. Bank-kassa -> Korparativ karta -> Korparativ kartalar = bu bo`limda o`zgartirish tugmasi xato ishlab turgandi to`g`irlandi
+4. Bank-kassa -> Korparativ karta -> Korparativ kartalar = bu bo`limda yana karta malumotlarini kiritish yoki o`zgartirish vaqtida karta egalari yoki haydovchilar ro`yxati kelmayotgan edi to`g`irlandi
+5. Bank-kassa -> Korparativ karta -> Korparativ kartalar = bu bo`limda yana mashinalar raqami kiritish imkoni yo`q edi qo`shildi
+6. Bank-kassa -> Korparativ karta -> Korparativ kartalar = yana bir muammosi karta mablag`i xato kelyotgan edi to`g`irlandi buning sababi bir karta qayta qayta ochib yopilgan. Bu masalani logistica bilan qayta maslaxat qilinishi kerak
+7. Serverda korparativ kartadan pul sarflanganda 1 so`m kam hisoblangan to`g`irlandi
+8. serverda Redish ishlamay qolgan ekan to`g`irlandi
+9. Serverda database connectionlar soni oshib ketib resurs yetishmovchiligi to`g`rilandi
+
+10. Appga kirgan payt server error berib turgan edi to`g`irlandi
+11. Serverdan ma'lumotlar chala yetib kelishi to`g`irlandi
+12. Kiritish bo`limlari tizimning ko`p joyida ishlamay qolgan. To`g`irlandi
+13.Bosh sahifa, Sotuv, Sotib Olish va boshqa bo`limlardagi kiritish va chiqarishga oid xatoliklar to`g`irlandi
+14. TXK(korparativ karta) bo`limida bazi ma'lumotlar qatori to`liq ko`rsatilmiyapti. To`g`irlandi
+15.TXK(korparativ karta) bo`limidan xarajatlarni kiritish vaqtida skladga qilingan xarajatlarni tizim qabul qilmayapti. To`g`irlandi
+16. Karta xarajatlarini kiritayotganda asosiy parametrlar chiqmayapti. To`g`irlandi
+
+17. Bank kassa bo`limining ichida Vipiskalarni filterlash vaqtida shartnomalar sahifasiga o`tib ketishi to`g`irlandi
+18. Sotib olish bo`limida kirim qilish vaqtida korparativ kartalar ma'lumotlarini o`zgartirish qismi to`g`irlandi
+19. Zakazlarning ma'lumotlarini excel faylga o`girish vaqtida xatolik beryotgandi to`g`irlandi (problem of BackEnd)
